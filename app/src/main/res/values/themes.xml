@@ -1,0 +1,7 @@
+<resources>
+    <style name="Theme.AlbumSharer" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">#4A6FA5</item>
+        <item name="colorPrimaryDark">#345380</item>
+        <item name="colorAccent">#F2A65A</item>
+    </style>
+</resources>
