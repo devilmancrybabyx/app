@@ -1,15 +1,15 @@
 <resources>
     <color name="ic_launcher_background">#4A6FA5</color>
 
-    <color name="brand_primary">#4A6FA5</color>
-    <color name="brand_primary_dark">#345380</color>
+    <color name="brand_primary">#6C8FC7</color>
+    <color name="brand_primary_dark">#4A6FA5</color>
     <color name="brand_accent">#F2A65A</color>
     <color name="brand_accent_dark">#D98A3D</color>
 
-    <color name="bg_screen">#F5F7FA</color>
-    <color name="bg_card">#FFFFFF</color>
-    <color name="text_primary">#1E2530</color>
-    <color name="text_secondary">#6B7684</color>
-    <color name="error_red">#D64545</color>
-    <color name="divider">#E3E7EC</color>
+    <color name="bg_screen">#0E0E10</color>
+    <color name="bg_card">#1C1C1F</color>
+    <color name="text_primary">#F5F5F7</color>
+    <color name="text_secondary">#9A9AA2</color>
+    <color name="error_red">#FF6B6B</color>
+    <color name="divider">#2C2C30</color>
 </resources>
