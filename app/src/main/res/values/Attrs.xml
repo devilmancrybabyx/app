@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Declares colorBackground so any ?attr/colorBackground reference
+         in layouts/drawables resolves instead of failing resource linking. -->
+    <attr name="colorBackground" format="color" />
+</resources>
