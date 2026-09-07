@@ -1,13 +1,10 @@
 <resources>
-    <style name="Theme.AlbumSharer" parent="Theme.MaterialComponents.NoActionBar">
+    <style name="Theme.AlbumSharer" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/brand_primary</item>
         <item name="colorPrimaryDark">@color/brand_primary_dark</item>
         <item name="colorAccent">@color/brand_accent</item>
-        <item name="colorSurface">@color/bg_card</item>
-        <item name="colorOnSurface">@color/text_primary</item>
-        <item name="colorBackground">@color/bg_screen</item>
         <item name="android:windowBackground">@color/bg_screen</item>
-        <item name="android:textColorPrimary">@color/text_primary</item>
-        <item name="android:textColorSecondary">@color/text_secondary</item>
+        <!-- Added: resolves any ?attr/colorBackground reference elsewhere in the app -->
+        <item name="colorBackground">@color/bg_screen</item>
     </style>
 </resources>
