@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Album Sharer</string>
+
+    <string-array name="sort_modes">
+        <item>Newest first</item>
+        <item>Oldest first</item>
+        <item>Name (A–Z)</item>
+        <item>Name (Z–A)</item>
+    </string-array>
 </resources>
