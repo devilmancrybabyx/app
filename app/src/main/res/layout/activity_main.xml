@@ -12,26 +12,54 @@
         android:orientation="vertical"
         android:padding="20dp">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <!-- Header row: title/subtitle on the left, hamburger menu top-right -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Album Sharer"
-            android:textSize="26sp"
-            android:textStyle="bold"
-            android:textColor="@color/text_primary" />
+            android:orientation="horizontal"
+            android:gravity="top">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:layout_marginBottom="18dp"
-            android:text="Photo #1 = newest item, based on the sort below"
-            android:textSize="13sp"
-            android:textColor="@color/text_secondary" />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Album Sharer"
+                    android:textSize="26sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_primary" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="Photo #1 = newest item, based on the sort below"
+                    android:textSize="13sp"
+                    android:textColor="@color/text_secondary" />
+            </LinearLayout>
+
+            <ImageButton
+                android:id="@+id/btnMenu"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="top|end"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_hamburger"
+                android:contentDescription="Menu" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="18dp" />
+
+        <!-- Preview card -->
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="260dp"
+            android:layout_height="440dp"
             android:background="@drawable/rounded_card_bg">
 
             <ImageView
@@ -61,6 +89,7 @@
             android:textSize="13sp"
             android:text="" />
 
+        <!-- Number input -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -79,22 +108,7 @@
                 android:textSize="18sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/sortInputLayout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:hint="Sort order">
-
-            <AutoCompleteTextView
-                android:id="@+id/sortDropdown"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="none"
-                android:textSize="15sp" />
-        </com.google.android.material.textfield.TextInputLayout>
-
+        <!-- Action buttons -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -127,15 +141,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:text="Share"
-            app:cornerRadius="12dp" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnFolders"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="Choose Folders to Include"
             app:cornerRadius="12dp" />
 
     </LinearLayout>
