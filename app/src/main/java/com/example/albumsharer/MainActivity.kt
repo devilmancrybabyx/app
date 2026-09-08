@@ -8,9 +8,9 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Size
 import android.view.View
-import android.widget.ArrayAdapter
-import android.widget.AutoCompleteTextView
+import android.widget.ImageButton
 import android.widget.ImageView
+import android.widget.PopupMenu
 import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var imagePreview: ImageView
     private lateinit var playOverlay: View
     private lateinit var statusText: TextView
-    private lateinit var sortDropdown: AutoCompleteTextView
+    private lateinit var btnMenu: ImageButton
     private var pendingAction: (() -> Unit)? = null
     private var sortModeIndex: Int = 0
 
@@ -90,26 +90,39 @@ class MainActivity : AppCompatActivity() {
         imagePreview = findViewById(R.id.imagePreview)
         playOverlay = findViewById(R.id.playOverlay)
         statusText = findViewById(R.id.statusText)
-        sortDropdown = findViewById(R.id.sortDropdown)
+        btnMenu = findViewById(R.id.btnMenu)
         val btnPreview: MaterialButton = findViewById(R.id.btnPreview)
         val btnShare: MaterialButton = findViewById(R.id.btnShare)
         val btnRandom: MaterialButton = findViewById(R.id.btnRandom)
-        val btnFolders: MaterialButton = findViewById(R.id.btnFolders)
 
         sortModeIndex = getSavedSortModeIndex()
-        val labels = SortMode.values().map { it.label }
-        val sortAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, labels)
-        sortDropdown.setAdapter(sortAdapter)
-        sortDropdown.setText(labels[sortModeIndex], false)
-        sortDropdown.setOnItemClickListener { _, _, position, _ ->
-            sortModeIndex = position
-            saveSortModeIndex(position)
-        }
 
         btnPreview.setOnClickListener { withPermission { showPreview() } }
         btnShare.setOnClickListener { withPermission { shareSelectedItem() } }
         btnRandom.setOnClickListener { withPermission { pickRandom() } }
-        btnFolders.setOnClickListener { withPermission { showFolderPicker() } }
+        btnMenu.setOnClickListener { anchor -> showMainMenu(anchor) }
+    }
+
+    private fun showMainMenu(anchor: View) {
+        val popup = PopupMenu(this, anchor)
+        popup.menuInflater.inflate(R.menu.main_menu, popup.menu)
+        popup.setOnMenuItemClickListener { item ->
+            when (item.itemId) {
+                R.id.sort_newest -> { setSortMode(SortMode.NEWEST_FIRST); true }
+                R.id.sort_oldest -> { setSortMode(SortMode.OLDEST_FIRST); true }
+                R.id.sort_name_az -> { setSortMode(SortMode.NAME_AZ); true }
+                R.id.sort_name_za -> { setSortMode(SortMode.NAME_ZA); true }
+                R.id.menu_folders -> { withPermission { showFolderPicker() }; true }
+                else -> false
+            }
+        }
+        popup.show()
+    }
+
+    private fun setSortMode(mode: SortMode) {
+        sortModeIndex = SortMode.values().indexOf(mode)
+        saveSortModeIndex(sortModeIndex)
+        statusText.text = "Sort order: ${mode.label}"
     }
 
     private fun withPermission(action: () -> Unit) {
