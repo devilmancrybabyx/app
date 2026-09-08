@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_sort"
+        android:title="Sort order">
+        <menu>
+            <item android:id="@+id/sort_newest" android:title="Newest first" />
+            <item android:id="@+id/sort_oldest" android:title="Oldest first" />
+            <item android:id="@+id/sort_name_az" android:title="Name (A–Z)" />
+            <item android:id="@+id/sort_name_za" android:title="Name (Z–A)" />
+        </menu>
+    </item>
+
+    <item
+        android:id="@+id/menu_folders"
+        android:title="Choose Folders to Include" />
+
+</menu>
